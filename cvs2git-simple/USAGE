@@ -1,0 +1,27 @@
+# Copyright (C) 2017,2018 Ken'ichi Fukamachi
+#   All rights reserved. This program is free software; you can
+#   redistribute it and/or modify it under 2-Clause BSD License.
+#   https://opensource.org/licenses/BSD-2-Clause
+# 
+# mailto: fukachan@fml.org
+#    web: http://www.fml.org/
+#
+
+                  HOW TO USE THIS SCRIPT?
+
+
+#!/bin/sh
+
+github=git@github.com:REPOSITORY
+cvsroot=/var/tmp/cvs.example.org/cvsroot
+
+rsync -a cvs.example.org:/cvsroot/ $cvsroot/
+
+test -d work || mkdir work
+(
+	cd work || exit 1
+	#       cvs2git-simple.sh CVSROOT  CVS_REPO      GIT_REPO [GIT_REMOTE]
+	# sh ../cvs2git-simple.sh $cvsroot           fml  fml4.git $github 
+	# sh ../cvs2git-simple.sh $cvsroot software/fdgw  fdgw.git
+	  sh ../cvs2git-simple.sh $cvsroot software/fdgw fdgw1.git $github  
+)
